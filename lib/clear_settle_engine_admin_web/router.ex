@@ -17,7 +17,7 @@ defmodule ClearSettleEngineAdminWeb.Router do
   scope "/", ClearSettleEngineAdminWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", TradesAndBalancesLive, :home
     live "/trades_and_balances", TradesAndBalancesLive
   end
 
