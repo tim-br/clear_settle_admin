@@ -23,3 +23,8 @@ To start your server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 For viewing data from the admin interface, please refer to [Clear Settle Engine repository on GitHub](https://github.com/tim-br/clear_settle_engine). This repository offers tools and scripts that integrate seamlessly with ClearSettleEngineAdmin, allowing for a comprehensive view and interaction with live market events through the admin interface. You can run `mix successful_day` from within that repo to execute the successful_day task and view market events on [`localhost:4000`](http://localhost:4000).
+
+### Demo
+
+![admin_screenshare](https://github.com/tim-br/clear_settle_admin/assets/7538854/0d8df68f-b281-4e2c-849c-69fb2497d75d)
+
