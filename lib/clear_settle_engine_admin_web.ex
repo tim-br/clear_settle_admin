@@ -58,6 +58,18 @@ defmodule ClearSettleEngineAdminWeb do
     end
   end
 
+  def view do
+    quote do
+      use Phoenix.View,
+        root: "lib/clear_settle_engine_admin_web/templates",
+        namespace: ClearSettleEngineAdminWeb
+
+      # Import common functionality
+      import Phoenix.View
+      # ... other imports ...
+    end
+  end
+
   def live_component do
     quote do
       use Phoenix.LiveComponent

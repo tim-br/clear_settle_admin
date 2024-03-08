@@ -3,9 +3,9 @@ import Config
 # Configure your database
 config :clear_settle_engine_admin, ClearSettleEngineAdmin.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "",
   hostname: "localhost",
-  database: "clear_settle_engine_admin_dev",
+  database: "clear_settle_engine_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

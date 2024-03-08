@@ -18,6 +18,7 @@ defmodule ClearSettleEngineAdminWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/trades_and_balances", TradesAndBalancesLive
   end
 
   # Other scopes may use custom stacks.

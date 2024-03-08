@@ -10,7 +10,9 @@ defmodule ClearSettleEngineAdmin.Application do
     children = [
       ClearSettleEngineAdminWeb.Telemetry,
       ClearSettleEngineAdmin.Repo,
-      {DNSCluster, query: Application.get_env(:clear_settle_engine_admin, :dns_cluster_query) || :ignore},
+      NotificationListener,
+      {DNSCluster,
+       query: Application.get_env(:clear_settle_engine_admin, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: ClearSettleEngineAdmin.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: ClearSettleEngineAdmin.Finch},
