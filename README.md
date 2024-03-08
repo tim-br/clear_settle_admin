@@ -7,12 +7,4 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+For viewing data from the admin interface, please refer to [Clear Settle Engine repository on GitHub](https://github.com/tim-br/clear_settle_engine). This repository offers tools and scripts that integrate seamlessly with ClearSettleEngineAdmin, allowing for a comprehensive view and interaction with live market events through the admin interface.
