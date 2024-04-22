@@ -21,6 +21,8 @@ COPY . .
 # Compile the project
 
 RUN mix do compile
+RUN mix assets.deploy
+
 
 # Run the application
 CMD ["mix", "run"]
