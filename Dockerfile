@@ -4,6 +4,8 @@ FROM elixir:latest
 # Create and set the working directory
 WORKDIR /app
 
+ENV MIX_ENV prod
+
 # Copy the mix.exs and mix.lock files to the container
 COPY mix.exs mix.lock ./
 
@@ -14,6 +16,7 @@ RUN mix archive.install github hexpm/hex branch latest --force
 RUN mix local.rebar --force
 # Install dependencies
 RUN mix deps.get
+RUN mix deps.compile
 
 # Copy the rest of your application's code
 COPY . .
