@@ -1,14 +1,14 @@
 import Config
 
 # Configure your database
-config :clear_settle_engine_admin, ClearSettleEngineAdmin.Repo,
-  username: "postgres",
-  password: "",
-  hostname: "localhost",
-  database: "clear_settle_engine_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+# config :clear_settle_engine_admin, ClearSettleEngineAdmin.Repo,
+#   username: "postgres",
+#   password: "",
+#   hostname: "localhost",
+#   database: "clear_settle_engine_dev",
+#   stacktrace: true,
+#   show_sensitive_data_on_connection_error: true,
+#   pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
