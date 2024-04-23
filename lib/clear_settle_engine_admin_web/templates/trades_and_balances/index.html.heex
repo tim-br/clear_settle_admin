@@ -1,9 +1,25 @@
 <div id="balances">
+  <div class="flex justify-center mb-4">
+    <button
+      phx-click="schedule_trades"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Schedule Trades
+    </button>
+  </div>
   <h2 class="text-lg font-bold mb-4">Security Balances</h2>
   <style>
     .negative-balance {
       background-color: #FF7F50; /* Coral */
       color: white; /* Ensures text is still visible on red background */
+    }
+      /* Styles for the toast messages */
+    .info {
+      background-color: #3182ce; /* Blue */
+    }
+
+    .error {
+      background-color: #e53e3e; /* Red */
     }
   </style>
   <table class="table-auto border-collapse border border-gray-400 w-full">
@@ -16,7 +32,7 @@
     </thead>
     <tbody>
       <%= for balance <- @balances do %>
-        <tr class="<%= if balance["balance"] < 0, do: "negative-balance" %> border border-gray-400">
+        <tr class={"#{if balance["balance"] < 0, do: "negative-balance"} border border-gray-400"}>
           <td class="px-4 py-2"><%= balance["account_number"] %></td>
           <td class="px-4 py-2"><%= balance["security_id"] %></td>
           <td class="px-4 py-2"><%= balance["balance"] %></td>
@@ -29,6 +45,18 @@
 <div id="trades">
   <h2>Trades</h2>
   <%= for trade <- @trades do %>
-    <p><%= trade["sell_side_account_number"] %> to <%= trade["buy_side_account_number"] %> - Security: <%= trade["security_id"] %> - Quantity: <%= trade["quantity"] %> - Timestamp: <%= trade["inserted_at"] %></p>
+    <p>
+      <%= trade["sell_side_account_number"] %> to <%= trade["buy_side_account_number"] %> - Security: <%= trade[
+        "security_id"
+      ] %> - Quantity: <%= trade["quantity"] %> - Timestamp: <%= trade["inserted_at"] %>
+    </p>
+  <% end %>
+</div>
+
+<div id="toast-container" class="absolute top-0 left-0 right-0 p-4">
+  <%= if @toast != nil do %>
+    <div class={"px-4 py-2 rounded shadow-lg text-white #{@toast.type}"}>
+      <%= @toast.message %>
+    </div>
   <% end %>
 </div>

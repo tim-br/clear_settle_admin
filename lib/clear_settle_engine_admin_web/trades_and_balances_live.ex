@@ -28,6 +28,7 @@ defmodule ClearSettleEngineAdminWeb.TradesAndBalancesLive do
 
     {:ok,
      assign(socket,
+       toast: nil,
        trades: [],
        balances: transformed_balances,
        account_mapping: account_mapping,
@@ -49,6 +50,12 @@ defmodule ClearSettleEngineAdminWeb.TradesAndBalancesLive do
 
   def render(assigns) do
     ClearSettleEngineAdminWeb.TradesAndBalancesView.render("index.html", assigns)
+  end
+
+  @impl true
+  def handle_event("schedule_trades", _params, socket) do
+    GenServer.call(ClearSettleEngineAdmin.RabbitMQClient, {:publish, "no_msg"})
+    {:noreply, socket}
   end
 
   def handle_info({"new_trade", trade_json}, socket) do
@@ -91,6 +98,39 @@ defmodule ClearSettleEngineAdminWeb.TradesAndBalancesLive do
     updated_balances = update_balances(socket.assigns.balances, updated_balance_data)
 
     {:noreply, assign(socket, balances: updated_balances)}
+  end
+
+  @impl true
+  def handle_info({"transactions_started", "transactions_started"}, socket) do
+    socket =
+      assign(socket, :toast, %{
+        type: :info,
+        message: "Transactions have started successfully."
+      })
+
+    Process.send_after(self(), :clear_toast, 1500)
+
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_info({"transactions_started", "already_running"}, socket) do
+    IO.puts("in here")
+
+    socket =
+      assign(socket, :toast, %{
+        type: :error,
+        message:
+          "Transactions are already running and cannot be started again until current batch has terminated."
+      })
+
+    Process.send_after(self(), :clear_toast, 1500)
+
+    {:noreply, socket}
+  end
+
+  def handle_info(:clear_toast, socket) do
+    {:noreply, assign(socket, toast: nil)}
   end
 
   def update_balances(balances, new_balance_data) do
