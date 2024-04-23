@@ -10,7 +10,7 @@ defmodule ClearSettleEngineAdmin.Application do
     children = [
       ClearSettleEngineAdminWeb.Telemetry,
       ClearSettleEngineAdmin.Repo,
-      {ClearSettleEngineAdmin.RabbitMQClient, []},
+      ## {ClearSettleEngineAdmin.RabbitMQClient, []},
       NotificationListener,
       {DNSCluster,
        query: Application.get_env(:clear_settle_engine_admin, :dns_cluster_query) || :ignore},
