@@ -25,7 +25,7 @@ config :clear_settle_engine_admin, ClearSettleEngineAdminWeb.Endpoint,
   pubsub_server: ClearSettleEngineAdmin.PubSub,
   live_view: [signing_salt: "kLC5F5Sh"]
 
-config :clear_settle_engine, ClearSettleEngine.Repo,
+config :clear_settle_engine_admin, ClearSettleEngineAdmin.Repo,
   username: System.get_env("DB_USERNAME", "postgres"),
   password: System.get_env("DB_PASSWORD", ""),
   database: System.get_env("DB_DATABASE", "clear_settle_engine_dev"),
