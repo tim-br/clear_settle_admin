@@ -4,8 +4,6 @@ FROM elixir:latest
 # Create and set the working directory
 WORKDIR /app
 
-ENV MIX_ENV prod
-
 # Copy the mix.exs and mix.lock files to the container
 COPY mix.exs mix.lock ./
 
