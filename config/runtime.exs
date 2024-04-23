@@ -30,7 +30,7 @@ if config_env() == :prod do
 
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
-  config :clear_settle_engine, ClearSettleEngine.Repo,
+  config :clear_settle_engine_admin, ClearSettleEngineAdmin.Repo,
     username: System.get_env("DB_USERNAME", "postgres"),
     password: System.get_env("DB_PASSWORD", ""),
     database: System.get_env("DB_DATABASE", "clear_settle_engine_dev"),

@@ -29,6 +29,16 @@ config :clear_settle_engine_admin, ClearSettleEngineAdminWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
+config :clear_settle_engine_admin, ClearSettleEngineAdmin.Repo,
+  username: System.get_env("DB_USERNAME", "postgres"),
+  password: System.get_env("DB_PASSWORD", ""),
+  database: System.get_env("DB_DATABASE", "clear_settle_engine_dev"),
+  hostname: System.get_env("DB_HOST", "localhost"),
+  port: System.get_env("DB_PORT", "5432"),
+  ssl: true,
+  ssl_opts: [verify: :verify_none],
+  pool_size: String.to_integer(System.get_env("DB_POOL_SIZE", "10"))
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
